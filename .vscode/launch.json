@@ -1,0 +1,20 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Project: Nodemon Watch and Run",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "nodemon",
+			"runtimeArgs": [
+				"--exec",
+				"eslint src --ext .ts && rimraf dist && webpack --config webpack.config.js",
+				"--ext",
+				"ts",
+				"--watch",
+				"src"
+			],
+			"console": "integratedTerminal"
+		}
+	]
+}
