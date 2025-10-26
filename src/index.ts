@@ -1,1 +1,3 @@
-const a = 3;
+import { Game } from 'game/game';
+
+new Game();

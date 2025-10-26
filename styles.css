@@ -1,7 +1,185 @@
-.game {
+* {
+	font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+:root {
+	--primary-color: rgba(0, 229, 255, 0.75);
+	--secondary-color: #ffe4e1;
+
+	color: var(--secondary-color);
+	text-shadow: 1px 1px 1px black;
+}
+
+.game,
+.game canvas {
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
+	background-size: 100% 100%;
+	background-image: url('assets/images/back.png');
+	z-index: 1;
+}
+
+.score-container {
+	position: fixed;
+	display: flex;
+	left: 0;
+	top: 0;
+	width: 98%;
+	height: 9vh;
+	padding: 0 1%;
+	font-size: 7.5vh;
+	font-weight: bold;
+	justify-content: space-between;
+	align-items: center;
+	text-shadow: 2px 2px 4px var(--primary-color);
+	z-index: 2;
+}
+
+.main-menu {
+	position: fixed;
+	display: flex;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-color: rgba(0, 0, 0, 0.25);
+}
+
+.main-menu .menu-button {
+	display: flex;
+	width: 50%;
+	height: 20%;
+	font-size: 6vh;
+	align-items: center;
+	justify-content: center;
+	color: var(--secondary-color);
+	background-color: var(--primary-color);
+	transition: ease 0.1s;
+}
+
+.main-menu .menu-button:hover {
+	cursor: pointer;
+	scale: 1.05;
+	filter: brightness(125%);
+}
+
+.volume-slider {
+	position: absolute;
+	right: 0;
+	top: 10%;
+	width: 0.5%;
+	height: 80%;
+	margin: 0 1%;
+	border-radius: 3px;
+	background-color: var(--primary-color);
+}
+
+.volume-thumb {
+	width: 400%;
+	left: -150%;
+	height: 5%;
+	border-radius: 5px;
+	background-color: var(--secondary-color);
+}
+
+.volume-slider:hover,
+.volume-thumb:hover {
+	cursor: pointer;
+}
+
+.achievements-container {
+	position: fixed;
+	left: 23%;
+	top: 7%;
+	width: 50%;
+	height: 80%;
+	padding: 2%;
+	background-color: var(--primary-color);
+	z-index: 4;
+}
+
+.achievements-container .header {
+	position: absolute;
+	display: flex;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 10%;
+	background-color: var(--primary-color);
+}
+
+.achievements-container .header .title {
+	display: flex;
+	width: 95%;
+	font-size: 4vh;
+	font-weight: bold;
+	align-items: center;
+	justify-content: center;
+	text-shadow: 1px 1px 1px black;
+}
+
+.achievements-container .header .close {
+	display: flex;
+	width: 5%;
+	font-size: 6vh;
+	padding-bottom: 1%;
+	align-items: center;
+	justify-content: center;
+	transition: ease 0.25s;
+}
+
+.achievements-container .header .close:hover {
+	cursor: pointer;
+	color: red;
+}
+
+.achievements {
+	position: absolute;
+	display: flex;
+	left: 0;
+	top: 10%;
+	width: 100%;
+	height: 90%;
+	align-items: center;
+	flex-direction: column;
+	overflow-y: scroll;
+}
+
+.achievement {
+	display: flex;
+	width: 95%;
+	height: 14vh;
+	margin: 2vh 0;
+}
+
+.achievement img {
+	width: 14%;
+	height: 100%;
+	margin-right: 2%;
+}
+
+.achievement.not-opened img {
+	filter: grayscale(100%);
+}
+
+.achievement .text {
+	display: flex;
+	flex-direction: column;
+}
+
+.achievement .title {
+	font-size: 3.6vh;
+	font-weight: bold;
+	margin-bottom: 2%;
+}
+
+.achievement .description {
+	font-size: 2.6vh;
 }

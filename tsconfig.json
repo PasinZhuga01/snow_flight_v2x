@@ -5,9 +5,7 @@
 		"rootDir": "./src",
 		"moduleResolution": "nodenext",
 		"baseUrl": "./src",
-		"paths": {
-			"@test": ["./abc"]
-		},
+		"paths": {},
 		"declaration": false,
 		"outDir": "./dist",
 		"noEmitOnError": true,

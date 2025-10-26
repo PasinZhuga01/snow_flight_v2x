@@ -3,9 +3,40 @@
 		<title>Snow Flight</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" href="assets/images/player.png" />
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
+		<div class="score-container">
+			<div class="score"></div>
+			<div class="max-score"></div>
+		</div>
+		<div class="main-menu">
+			<div class="menu-button play">Играть</div>
+			<div class="menu-button open-achievements">Достижения</div>
+
+			<div class="volume-slider">
+				<div class="volume-thumb"></div>
+			</div>
+		</div>
+		<div class="achievements-container">
+			<div class="header">
+				<div class="title">Достижения</div>
+				<div class="close">x</div>
+			</div>
+			<div class="achievements"></div>
+		</div>
+
+		<template class="achievement-template">
+			<div class="achievement">
+				<img src="assets/images/gift.png" />
+				<div class="text">
+					<div class="title"></div>
+					<div class="description"></div>
+				</div>
+			</div>
+		</template>
+
 		<script type="text/javascript" src="dist/bundle.js"></script>
 	</body>
 </html>
