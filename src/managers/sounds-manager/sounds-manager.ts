@@ -19,7 +19,7 @@ export class SoundsManager {
 			}
 		});
 
-		this._backSoundsManager = new CyxapikiSoundsManager(SOUNDS.BACK, { volume: this._storage.getItem('volume') });
+		this._backSoundsManager = new CyxapikiSoundsManager(SOUNDS.BACK, { volume: this._storage.getItem('volume'), isRepeat: true });
 		this._loseSoundsManager = new CyxapikiSoundsManager(SOUNDS.LOSE, { volume: this._storage.getItem('volume') });
 
 		this._setupVolumeSlider();
