@@ -1,6 +1,7 @@
 import { PhysicsManager } from 'cyxapiki_engine/physics';
 import { Scene } from 'cyxapiki_engine/render';
 import { Camera } from 'cyxapiki_engine/camera';
+import { Vector } from 'cyxapiki_engine/geometry';
 
 import { GameStatus } from './game.types';
 
@@ -23,10 +24,8 @@ export class Game {
 	private _status: GameStatus;
 
 	public constructor() {
-		const camera = new Camera(PLAYGROUND_SIZE);
-
-		this._physics = new PhysicsManager(undefined, camera);
-		this._scene = this._createScene(camera);
+		this._physics = new PhysicsManager(undefined, new Camera(new Vector(PLAYGROUND_SIZE).map(2, (a, b) => a * b)));
+		this._scene = this._createScene(new Camera(PLAYGROUND_SIZE));
 
 		this._stageManager = this._createStageManager();
 		this._soundsManager = new SoundsManager();

@@ -4,7 +4,15 @@ import { Bounds } from 'cyxapiki_engine/geometry';
 import { randomInteger, withReturn } from 'cyxapiki_engine/utils';
 
 import { BaseEntity, Block, Checkpoint, Player, PlayerEventHandlers } from '../../entities';
-import { BLOCK_START_BOUNDS, CHECKPOINT_START_BOUNDS, PLAYER_BOUNDS, PLAYGROUND_SIZE, STAGE_TICK_DELAY } from '../../constants';
+import {
+	BLOCK_START_BOUNDS,
+	BOTTOM_BORDER_BOUNDS,
+	CHECKPOINT_START_BOUNDS,
+	PLAYER_BOUNDS,
+	PLAYGROUND_SIZE,
+	STAGE_TICK_DELAY,
+	TOP_BORDER_BOUNDS
+} from '../../constants';
 
 export class StageManager {
 	private readonly _scene: Scene;
@@ -23,6 +31,8 @@ export class StageManager {
 		this._stageTick = STAGE_TICK_DELAY;
 
 		this._player = this._registerEntity(new Player(handlers, new Bounds(PLAYER_BOUNDS)));
+
+		this._setupBorders();
 	}
 
 	public playerJump() {
@@ -78,8 +88,8 @@ export class StageManager {
 
 		this._registerTempEntity(new Checkpoint(checkpointBounds));
 
-		this._registerTempEntity(new Block(topBlockBounds, true));
-		this._registerTempEntity(new Block(bottomBlockBounds, false));
+		this._registerTempEntity(new Block(topBlockBounds, false, true));
+		this._registerTempEntity(new Block(bottomBlockBounds, false, false));
 	}
 
 	private _registerEntity<T extends BaseEntity>(entity: T) {
@@ -88,5 +98,10 @@ export class StageManager {
 
 	private _registerTempEntity<T extends BaseEntity>(entity: T) {
 		return withReturn(this._registerEntity(entity), (target) => this._tempEntities.push(target));
+	}
+
+	private _setupBorders() {
+		this._registerEntity(new Block(new Bounds(TOP_BORDER_BOUNDS), true));
+		this._registerEntity(new Block(new Bounds(BOTTOM_BORDER_BOUNDS), true));
 	}
 }

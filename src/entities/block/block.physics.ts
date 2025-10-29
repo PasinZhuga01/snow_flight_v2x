@@ -4,12 +4,18 @@ import { GravityComponent } from 'cyxapiki_engine/physics/objects/components';
 import { withReturn } from 'cyxapiki_engine/utils';
 
 export class BlockPhysics extends BasePhysicsObject {
-	public constructor(bounds: Bounds) {
-		super(bounds, [
-			withReturn(new GravityComponent(new Vector({ x: -0.1 })), (target) => {
-				target.velocity.addEventListener('change', () => (target.velocity.x = -5));
-			})
-		]);
+	public constructor(bounds: Bounds, isBorder: boolean) {
+		const components: GravityComponent[] = [];
+
+		if (!isBorder) {
+			components.push(
+				withReturn(new GravityComponent(new Vector({ x: -0.1 })), (target) => {
+					target.velocity.addEventListener('change', () => (target.velocity.x = -5));
+				})
+			);
+		}
+
+		super(bounds, components);
 	}
 
 	protected _assignStateBuffer(stateBuffer: BasePhysicsObjectStateBuffer) {

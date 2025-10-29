@@ -8,8 +8,11 @@ export const PLAYER_BOUNDS = { x: 300, y: 190, width: 76, height: 66 } as const;
 export const BLOCK_START_BOUNDS = { x: PLAYGROUND_SIZE.x, width: 150, height: PLAYGROUND_SIZE.y * 0.75 } as const;
 export const CHECKPOINT_START_BOUNDS = { x: BLOCK_START_BOUNDS.x, width: BLOCK_START_BOUNDS.width } as const;
 
+export const TOP_BORDER_BOUNDS = { ...PLAYER_BOUNDS, y: -PLAYER_BOUNDS.height * 2, height: 1 };
+export const BOTTOM_BORDER_BOUNDS = { ...PLAYER_BOUNDS, y: PLAYGROUND_SIZE.y + PLAYER_BOUNDS.height * 2, height: 1 };
+
 export const SOUNDS = {
-	BACK: ['assets/sounds/back_0.mp3', 'assets/sounds/back_1.mp3', 'assets/sounds/back_2.mp3'],
+	BACK: ['assets/sounds/back_0.mp3', 'assets/sounds/back_1.mp3', 'assets/sounds/back_2.mp3', 'assets/sounds/back_3.mp3'],
 	LOSE: ['assets/sounds/finish.mp3']
 } as const satisfies Record<string, [string, ...string[]]>;
 
