@@ -50,6 +50,7 @@ export class Game {
 
 		this._engine.start();
 		this._soundsManager.play();
+		this._achievementsManager.setVisibility(false);
 		this._menuManager.setVisibility(false);
 	}
 
