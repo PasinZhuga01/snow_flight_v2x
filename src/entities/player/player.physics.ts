@@ -28,11 +28,11 @@ export class PlayerPhysics extends BasePhysicsObject {
 		this._assignBaseStateBuffer(stateBuffer);
 	}
 
-	protected _createStateObject(neighbours: Iterable<BasePhysicsObject>): BasePhysicsObjectState {
-		return this._createBaseStateObject(neighbours);
+	protected _createStateObject(state: BasePhysicsObjectState): BasePhysicsObjectState {
+		return state;
 	}
 
-	protected _createStateBuffer(): BasePhysicsObjectStateBuffer {
-		return this._createBaseStateBuffer();
+	protected _createStateBuffer(stateBuffer: BasePhysicsObjectStateBuffer): BasePhysicsObjectStateBuffer {
+		return stateBuffer;
 	}
 }
