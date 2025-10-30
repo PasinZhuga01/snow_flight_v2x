@@ -18,15 +18,13 @@ export class BlockPhysics extends BasePhysicsObject {
 		super(bounds, components);
 	}
 
-	protected _assignStateBuffer(stateBuffer: BasePhysicsObjectStateBuffer) {
-		this._assignBaseStateBuffer(stateBuffer);
-	}
+	protected _assignObjectStateBuffer() {}
 
-	protected _createStateObject(state: BasePhysicsObjectState): BasePhysicsObjectState {
+	protected _createObjectState(state: BasePhysicsObjectState): BasePhysicsObjectState {
 		return state;
 	}
 
-	protected _createStateBuffer(stateBuffer: BasePhysicsObjectStateBuffer): BasePhysicsObjectStateBuffer {
+	protected _createObjectStateBuffer(stateBuffer: BasePhysicsObjectStateBuffer): BasePhysicsObjectStateBuffer {
 		return stateBuffer;
 	}
 }

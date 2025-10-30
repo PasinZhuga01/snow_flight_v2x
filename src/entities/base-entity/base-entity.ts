@@ -28,7 +28,7 @@ export abstract class BaseEntity<
 			scene.insert(0, this._sceneObject);
 		}
 
-		physics.insertImportant(this._physicsObject);
+		physics.insert(this._physicsObject);
 	}
 
 	public extractFrom(scene: Scene, physics: PhysicsManager) {

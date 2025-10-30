@@ -24,15 +24,13 @@ export class PlayerPhysics extends BasePhysicsObject {
 		this._gravity.velocity.y = 0;
 	}
 
-	protected _assignStateBuffer(stateBuffer: BasePhysicsObjectStateBuffer) {
-		this._assignBaseStateBuffer(stateBuffer);
-	}
+	protected _assignObjectStateBuffer() {}
 
-	protected _createStateObject(state: BasePhysicsObjectState): BasePhysicsObjectState {
+	protected _createObjectState(state: BasePhysicsObjectState): BasePhysicsObjectState {
 		return state;
 	}
 
-	protected _createStateBuffer(stateBuffer: BasePhysicsObjectStateBuffer): BasePhysicsObjectStateBuffer {
+	protected _createObjectStateBuffer(stateBuffer: BasePhysicsObjectStateBuffer): BasePhysicsObjectStateBuffer {
 		return stateBuffer;
 	}
 }
