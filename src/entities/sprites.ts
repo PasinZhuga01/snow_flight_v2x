@@ -12,5 +12,19 @@ export const sprites = {
 		{ x: BLOCK_START_BOUNDS.width, y: BLOCK_START_BOUNDS.height },
 		{ scale: new Vector({ x: 1, y: -1 }) }
 	),
-	bottomBlock: createSprite('block.png', { x: BLOCK_START_BOUNDS.width, y: BLOCK_START_BOUNDS.height })
+	bottomBlock: createSprite('block.png', { x: BLOCK_START_BOUNDS.width, y: BLOCK_START_BOUNDS.height }),
+
+	topBlockWithGarlands0: createSprite(
+		'block_with_garlands_0.png',
+		{ x: BLOCK_START_BOUNDS.width, y: BLOCK_START_BOUNDS.height },
+		{ scale: new Vector({ x: 1, y: -1 }) }
+	),
+	bottomBlockWithGarlands0: createSprite('block_with_garlands_0.png', { x: BLOCK_START_BOUNDS.width, y: BLOCK_START_BOUNDS.height }),
+
+	topBlockWithGarlands1: createSprite(
+		'block_with_garlands_1.png',
+		{ x: BLOCK_START_BOUNDS.width, y: BLOCK_START_BOUNDS.height },
+		{ scale: new Vector({ x: 1, y: -1 }) }
+	),
+	bottomBlockWithGarlands1: createSprite('block_with_garlands_1.png', { x: BLOCK_START_BOUNDS.width, y: BLOCK_START_BOUNDS.height })
 } as const satisfies Record<string, Sprite>;

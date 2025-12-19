@@ -8,6 +8,7 @@ import {
 	BLOCK_START_BOUNDS,
 	BOTTOM_BORDER_BOUNDS,
 	CHECKPOINT_START_BOUNDS,
+	GARLAND_TICK_DELAY,
 	PLAYER_BOUNDS,
 	PLAYGROUND_SIZE,
 	STAGE_TICK_DELAY,
@@ -72,6 +73,10 @@ export class StageManager {
 	private _updateStage() {
 		this._stageTick++;
 
+		if (this._stageTick % GARLAND_TICK_DELAY === 0) {
+			this._updateBlockGarlands();
+		}
+
 		if (this._stageTick >= STAGE_TICK_DELAY) {
 			this._stageTick = 0;
 			this._generateNextStage();
@@ -86,10 +91,21 @@ export class StageManager {
 		const topBlockBounds = new Bounds({ ...BLOCK_START_BOUNDS, y: checkpointY - BLOCK_START_BOUNDS.height });
 		const bottomBlockBounds = new Bounds({ ...BLOCK_START_BOUNDS, y: checkpointY + checkpointHeight });
 
+		const topBlockHasGarland = randomInteger(1, 3) === 3;
+		const bottomBlockHasGarland = randomInteger(1, 3) === 3;
+
 		this._registerTempEntity(new Checkpoint(checkpointBounds));
 
-		this._registerTempEntity(new Block(topBlockBounds, false, true));
-		this._registerTempEntity(new Block(bottomBlockBounds, false, false));
+		this._registerTempEntity(new Block(topBlockBounds, false, true, topBlockHasGarland));
+		this._registerTempEntity(new Block(bottomBlockBounds, false, false, bottomBlockHasGarland));
+	}
+
+	private _updateBlockGarlands() {
+		for (const entity of this._tempEntities) {
+			if (entity instanceof Block) {
+				entity.toggleGarlandLight();
+			}
+		}
 	}
 
 	private _registerEntity<T extends BaseEntity>(entity: T) {
