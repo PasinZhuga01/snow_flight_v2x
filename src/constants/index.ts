@@ -1,8 +1,12 @@
 import { Achievement } from '../types';
 
 export const PLAYGROUND_SIZE = { x: 960, y: 540 } as const;
+
 export const STAGE_TICK_DELAY = 90;
 export const GARLAND_TICK_DELAY = 20;
+export const SNOWFALL_TICK_DELAY = 50;
+
+export const MAX_SNOWFALL_LENGTH = 4;
 
 export const PLAYER_BOUNDS = { x: 300, y: 190, width: 76, height: 66 } as const;
 

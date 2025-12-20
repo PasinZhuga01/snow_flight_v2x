@@ -7,6 +7,7 @@ import { BLOCK_START_BOUNDS, PLAYER_BOUNDS } from '../constants';
 
 export const sprites = {
 	player: createSprite('player.png', { x: PLAYER_BOUNDS.width, y: PLAYER_BOUNDS.height }),
+	snow: createSprite('snow.png', { x: 8, y: 8 }),
 	topBlock: createSprite(
 		'block.png',
 		{ x: BLOCK_START_BOUNDS.width, y: BLOCK_START_BOUNDS.height },

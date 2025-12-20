@@ -12,11 +12,15 @@ export abstract class BaseEntity<
 	protected readonly _sceneObject: TSceneObject;
 	protected readonly _physicsObject: TPhysics;
 
-	protected constructor(bounds: Bounds, sceneObject: TSceneObject, physicsObject: TPhysics) {
+	private readonly _layerIndex: number;
+
+	protected constructor(bounds: Bounds, sceneObject: TSceneObject, physicsObject: TPhysics, layerIndex: number = 0) {
 		this._bounds = bounds;
 
 		this._sceneObject = sceneObject;
 		this._physicsObject = physicsObject;
+
+		this._layerIndex = layerIndex;
 	}
 
 	public isOffscreenLeft(): boolean {
@@ -25,7 +29,7 @@ export abstract class BaseEntity<
 
 	public insertTo(scene: Scene, physics: PhysicsManager) {
 		if (this._sceneObject !== null) {
-			scene.insert(0, this._sceneObject);
+			scene.insert(this._layerIndex, this._sceneObject);
 		}
 
 		physics.insert(this._physicsObject);

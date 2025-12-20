@@ -1,16 +1,18 @@
 import { Scene } from 'cyxapiki_engine/render';
 import { PhysicsManager } from 'cyxapiki_engine/physics';
 import { Bounds } from 'cyxapiki_engine/geometry';
-import { randomInteger, withReturn } from 'cyxapiki_engine/utils';
+import { randomBoolean, randomInteger, withReturn } from 'cyxapiki_engine/utils';
 
-import { BaseEntity, Block, Checkpoint, Player, PlayerEventHandlers } from '../../entities';
+import { BaseEntity, Block, Checkpoint, Player, PlayerEventHandlers, Snow } from '../../entities';
 import {
 	BLOCK_START_BOUNDS,
 	BOTTOM_BORDER_BOUNDS,
 	CHECKPOINT_START_BOUNDS,
 	GARLAND_TICK_DELAY,
+	MAX_SNOWFALL_LENGTH,
 	PLAYER_BOUNDS,
 	PLAYGROUND_SIZE,
+	SNOWFALL_TICK_DELAY,
 	STAGE_TICK_DELAY,
 	TOP_BORDER_BOUNDS
 } from '../../constants';
@@ -77,6 +79,10 @@ export class StageManager {
 			this._updateBlockGarlands();
 		}
 
+		if (this._stageTick % SNOWFALL_TICK_DELAY === 0) {
+			this._spawnRandomSnow();
+		}
+
 		if (this._stageTick >= STAGE_TICK_DELAY) {
 			this._stageTick = 0;
 			this._generateNextStage();
@@ -104,6 +110,16 @@ export class StageManager {
 		for (const entity of this._tempEntities) {
 			if (entity instanceof Block) {
 				entity.toggleGarlandLight();
+			}
+		}
+	}
+
+	private _spawnRandomSnow() {
+		const percent = PLAYGROUND_SIZE.x / MAX_SNOWFALL_LENGTH;
+
+		for (let x = percent; x < PLAYGROUND_SIZE.x + PLAYGROUND_SIZE.x / 2; x += percent) {
+			if (randomBoolean()) {
+				this._registerTempEntity(new Snow(new Bounds({ x, y: 0, width: 4, height: 4 })));
 			}
 		}
 	}
