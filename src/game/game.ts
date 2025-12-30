@@ -37,7 +37,14 @@ export class Game {
 
 		this._status = 'menu';
 
-		this._setupKeyDownInput({ Escape: () => this._togglePause(), ' ': () => this._stageManager.playerJump() });
+		this._setupKeyDownInput({
+			Escape: () => this._togglePause(),
+			' ': () => {
+				if (this._engine.isStarted) {
+					this._stageManager.playerJump();
+				}
+			}
+		});
 	}
 
 	private _play() {
